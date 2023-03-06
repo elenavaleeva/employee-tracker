@@ -8,13 +8,20 @@ create TABLE department (
 );
 create TABLE role (
     id INT NOT NULL auto_increment,
-    name varchar(255) NULL,
+    title varchar(255) NULL,
+    salary decimal not NULL,
+    department_ID INT,
+    FOREIGN KEY (department_ID) REFERENCES department(id) ON DELETE CASCADE,
     primary key (id)
 );
 create TABLE employee (
     id INT NOT NULL auto_increment,
-    title varchar(255) NULL,
+    first_name varchar(255) NULL,
     last_name varchar(255) NULL,
-    department_id int null,
-    primary key (id)
+    role_id int null,
+    FOREIGN KEY (role_id) REFERENCES role(id) ON DELETE CASCADE,
+    manager_id INT,
+    FOREIGN KEY (manager_id) REFERENCES employee(id) ON DELETE
+    set null,
+        primary key (id)
 );
